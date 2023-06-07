@@ -57,12 +57,17 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+
+
                     <img
-                        className="rounded-circle mr-5"
-                        src=''
+                        className="rounded-full mr-4"
+                        src={user?.photoURL}
                         alt="Profile Picture"
-                        style={{ width: "40px", height: "40px" }}
+                        style={{ width: "60px", height: "50px" }}
+
                     />
+                    <span>{user?.displayName}</span>
+
                 </div>
             </div>
         </div>
