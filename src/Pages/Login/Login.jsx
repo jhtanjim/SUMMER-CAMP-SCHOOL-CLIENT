@@ -1,12 +1,17 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
 
     const { signIn } = useContext(AuthContext)
 
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || "/"
 
     const handleLogin = event => {
         event.preventDefault()
@@ -66,7 +71,7 @@ const Login = () => {
                             </div>
                         </form>
                         <p><small>New Here? <Link to='/signUp'>Create a New Account</Link></small></p>
-
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
