@@ -1,0 +1,202 @@
+[
+    {
+        "_id": 1,
+        "image": "https://i.ibb.co/RzTvLw9/pexels-yan-krukau-8190785.jpg",
+        "name": "Guitar Lessons",
+        "instructor": "John Smith",
+        "availableSeats": 10,
+        "price": 50,
+        "category": "Guitar",
+        "popular": true
+    },
+    {
+        "_id": 2,
+        "image": "https://i.ibb.co/Fh430nx/pexels-yan-krukau-8520514.jpg",
+        "name": "Piano Class",
+        "instructor": "Emily Johnson",
+        "availableSeats": 8,
+        "price": 70,
+        "category": "Piano",
+        "popular": true
+    },
+    {
+        "_id": 3,
+        "image": "https://i.ibb.co/1dGLMN2/170326-CSMRecital-Spring17-nj-2187.jpg",
+        "name": "Drumming Workshop",
+        "instructor": "Michael Davis",
+        "availableSeats": 12,
+        "price": 60,
+        "category": "Drums",
+        "popular": true
+    },
+    {
+        "_id": 4,
+        "image": "https://example.com/image4.jpg",
+        "name": "Violin Lessons",
+        "instructor": "Sarah Thompson",
+        "availableSeats": 15,
+        "price": 55,
+        "category": "Violin",
+        "popular": false
+    },
+    {
+        "_id": 5,
+        "image": "https://example.com/image5.jpg",
+        "name": "Saxophone Class",
+        "instructor": "Daniel Wilson",
+        "availableSeats": 5,
+        "price": 80,
+        "category": "Saxophone",
+        "popular": false
+    },
+    {
+        "_id": 6,
+        "image": "https://i.ibb.co/PTmX8Bk/pexels-pavel-danilyuk-7520935.jpg",
+        "name": "Bass Guitar Workshop",
+        "instructor": "Sophia Lee",
+        "availableSeats": 10,
+        "price": 65,
+        "category": "Bass Guitar",
+        "popular": true
+    },
+    {
+        "_id": 7,
+        "image": "https://i.ibb.co/vqxLnVL/pexels-pixabay-236149.jpg",
+        "name": "Vocal Training",
+        "instructor": "Benjamin Adams",
+        "availableSeats": 6,
+        "price": 75,
+        "category": "Vocals",
+        "popular": true
+    },
+    {
+        "_id": 8,
+        "image": "https://example.com/image8.jpg",
+        "name": "Flute Lessons",
+        "instructor": "Ava Wilson",
+        "availableSeats": 8,
+        "price": 60,
+        "category": "Flute",
+        "popular": false
+    },
+    {
+        "_id": 9,
+        "image": "https://example.com/image9.jpg",
+        "name": "Trumpet Class",
+        "instructor": "James Miller",
+        "availableSeats": 12,
+        "price": 45,
+        "category": "Trumpet",
+        "popular": false
+    },
+    {
+        "_id": 10,
+        "image": "https://i.ibb.co/4SZmRjt/pexels-hugo-mart-nez-16948110.jpg",
+        "name": "Keyboard Workshop",
+        "instructor": "Natalie Thomas",
+        "availableSeats": 4,
+        "price": 90,
+        "category": "Keyboard",
+        "popular": true
+    },
+    {
+        "_id": 11,
+        "image": "https://example.com/image11.jpg",
+        "name": "Cello Lessons",
+        "instructor": "Jacob Clark",
+        "availableSeats": 7,
+        "price": 70,
+        "category": "Cello",
+        "popular": false
+    },
+    {
+        "_id": 12,
+        "image": "https://example.com/image12.jpg",
+        "name": "Harp Class",
+        "instructor": "Chloe Adams",
+        "availableSeats": 10,
+        "price": 55,
+        "category": "Harp",
+        "popular": false
+    },
+    {
+        "_id": 13,
+        "image": "https://example.com/image13.jpg",
+        "name": "Electric Guitar Workshop",
+        "instructor": "William Turner",
+        "availableSeats": 15,
+        "price": 60,
+        "category": "Electric Guitar",
+        "popular": false
+    },
+    {
+        "_id": 14,
+        "image": "https://example.com/image14.jpg",
+        "name": "Ukulele Class",
+        "instructor": "Olivia Roberts",
+        "availableSeats": 10,
+        "price": 40,
+        "category": "Ukulele",
+        "popular": false
+    },
+    {
+        "_id": 15,
+        "image": "https://example.com/image15.jpg",
+        "name": "Accordion Lessons",
+        "instructor": "Liam Anderson",
+        "availableSeats": 8,
+        "price": 50,
+        "category": "Accordion",
+        "popular": false
+    },
+    {
+        "_id": 16,
+        "image": "https://example.com/image16.jpg",
+        "name": "Clarinet Class",
+        "instructor": "Harper Garcia",
+        "availableSeats": 6,
+        "price": 85,
+        "category": "Clarinet",
+        "popular": false
+    },
+    {
+        "_id": 17,
+        "image": "https://example.com/image17.jpg",
+        "name": "Tabla Workshop",
+        "instructor": "Ella Wright",
+        "availableSeats": 12,
+        "price": 55,
+        "category": "Tabla",
+        "popular": false
+    },
+    {
+        "_id": 18,
+        "image": "https://example.com/image18.jpg",
+        "name": "Mandolin Lessons",
+        "instructor": "Alexander Ramirez",
+        "availableSeats": 10,
+        "price": 60,
+        "category": "Mandolin",
+        "popular": false
+    },
+    {
+        "_id": 19,
+        "image": "https://example.com/image19.jpg",
+        "name": "Harmonica Class",
+        "instructor": "Victoria Baker",
+        "availableSeats": 6,
+        "price": 70,
+        "category": "Harmonica",
+        "popular": false
+    },
+    {
+        "_id": 20,
+        "image": "https://example.com/image20.jpg",
+        "name": "Oboe Lessons",
+        "instructor": "Sebastian Morris",
+        "availableSeats": 8,
+        "price": 75,
+        "category": "Oboe",
+        "popular": false
+    }
+]
