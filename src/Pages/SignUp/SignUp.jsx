@@ -1,9 +1,10 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 
@@ -11,8 +12,11 @@ import { AuthContext } from '../../Providers/AuthProvider';
 
 
 const SignUp = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser } = useContext(AuthContext)
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile } = useContext(AuthContext)
+
+    const navigate = useNavigate()
+
 
     const onSubmit = data => {
         console.log(data);
@@ -20,6 +24,25 @@ const SignUp = () => {
             .then(res => {
                 const loggedUser = res.user
                 console.log(loggedUser);
+                updateUserProfile(data.name, data.photoURL)
+
+
+                    .then(() => {
+                        console.log('User Profile Updated');
+                        reset()
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User Created Successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate('/')
+
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             })
 
 
