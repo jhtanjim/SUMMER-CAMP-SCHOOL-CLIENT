@@ -7,6 +7,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import FourOfour from "../Pages/Shared/fourOfour/fourOfour";
 import Classes from "../Pages/Shared/Classes/Classes";
 import Main from "../Layout/Main";
+import Instuctors from "../Pages/Shared/Instuctors/Instuctors";
 
 
 
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
             {
                 path: '/classes',
                 element: <Classes></Classes>
+            },
+            {
+                path: '/instuctors',
+                element: <Instuctors></Instuctors>
             },
 
         ]

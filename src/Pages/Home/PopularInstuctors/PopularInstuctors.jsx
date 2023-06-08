@@ -19,7 +19,7 @@ const PopularInstuctors = () => {
     }, []);
 
     return (
-        <div className='my-32'>
+        <div className='my-32 	'>
             <SectionTitle
                 subHeading='Popular Instructor'
                 heading='Popular Instructor'
