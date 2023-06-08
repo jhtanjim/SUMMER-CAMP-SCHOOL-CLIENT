@@ -4,7 +4,7 @@ const PopularClassCard = ({ item }) => {
     const { image, name } = item;
     return (
 
-        <div className='grid grid-cols-3 gap-4'>
+        <div >
             <div className="card w-96 glass">
                 <figure><img src={image} alt="car!" /></figure>
                 <div className="card-body">

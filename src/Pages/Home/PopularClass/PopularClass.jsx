@@ -5,7 +5,7 @@ import PopularClassCard from './PopularClassCard';
 const PopularClass = () => {
     const [music, setMusic] = useState([])
     useEffect(() => {
-        fetch('music.json')
+        fetch('class.json')
             .then(res => res.json())
             .then(data => {
 

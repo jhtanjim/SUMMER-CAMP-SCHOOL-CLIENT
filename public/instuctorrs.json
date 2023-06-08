@@ -1,0 +1,204 @@
+[
+    {
+        "_id": 1,
+        "image": "https://i.ibb.co/XWTwzdT/pexels-chloe-1043473.jpg",
+        "name": "John Smith",
+        "email": "johnsmith@gmail.com",
+        "numClasses": 5,
+        "classes": [
+            "Guitar",
+            "Piano",
+            "Drums",
+            "Bass Guitar",
+            "Vocals"
+        ]
+    },
+    {
+        "_id": 2,
+        "image": "https://i.ibb.co/x67mwwL/pexels-vinicius-wiesehofer-1130626.jpg",
+        "name": "Emily Johnson",
+        "email": "emilyjohnson@gmail.com",
+        "numClasses": 3,
+        "classes": [
+            "Piano",
+            "Violin",
+            "Vocals"
+        ]
+    },
+    {
+        "_id": 3,
+        "image": "https://i.ibb.co/yk4dD5s/pexels-yaroslava-borz-10057618.jpg",
+        "name": "Micheal rooh",
+        "email": "Micheal@gmail.com",
+        "numClasses": 4,
+        "classes": [
+            "Drums",
+            "Guitar",
+            "Bass Guitar",
+            "Percussion"
+        ]
+    },
+    {
+        "_id": 4,
+        "image": "https://i.ibb.co/5szCH7r/pexels-phgaltri-15814603.jpg",
+        "name": "Sarah Thompson",
+        "email": "sarahthompson@gmail.com",
+        "numClasses": 0,
+        "classes": []
+    },
+    {
+        "_id": 5,
+        "image": "https://i.ibb.co/T4nY5n4/pexels-monstera-5331154.jpg",
+        "name": "Daniel Wilson",
+        "email": "danielwilson@gmail.com",
+        "numClasses": 2,
+        "classes": [
+            "Saxophone",
+            "Clarinet"
+        ]
+    },
+    {
+        "_id": 6,
+        "image": "https://i.ibb.co/7r3Ynb8/pexels-anastasia-shuraeva-8033791.jpg",
+        "name": "Sophia Lee",
+        "email": "sophialee@gmail.com",
+        "numClasses": 1,
+        "classes": [
+            "Bass Guitar"
+        ]
+    },
+    {
+        "_id": 7,
+        "image": "https://i.ibb.co/dK9dR9H/pexels-nitin-khajotia-1516680.jpg",
+        "name": "Benjamin Adams",
+        "email": "benjaminadams@gmail.com",
+        "numClasses": 3,
+        "classes": [
+            "Vocals",
+            "Piano",
+            "Guitar"
+        ]
+    },
+    {
+        "_id": 8,
+        "image": "https://i.ibb.co/tZTt0fn/pexels-marcus-aurelius-4063856.jpg",
+        "name": "Ava Wilson",
+        "email": "avawilson@gmail.com",
+        "numClasses": 2,
+        "classes": [
+            "Flute",
+            "Piano"
+        ]
+    },
+    {
+        "_id": 9,
+        "image": "https://i.ibb.co/XWTwzdT/pexels-chloe-1043473.jpg",
+        "name": "James Taylor",
+        "email": "jamestaylor@gmail.com",
+        "numClasses": 1,
+        "classes": [
+            "Trumpet"
+        ]
+    },
+    {
+        "_id": 10,
+        "image": "https://i.ibb.co/RbqnyL4/pexels-guilherme-jorge-2373993.jpg",
+        "name": "Mia Anderson",
+        "email": "miaanderson@gmail.com",
+        "numClasses": 2,
+        "classes": [
+            "Violin",
+            "Piano"
+        ]
+    },
+    {
+        "_id": 11,
+        "image": "https://i.ibb.co/CtLh78w/pexels-anna-nekrashevich-6801642.jpg",
+        "name": "Jacob Clark",
+        "email": "jacobclark@gmail.com",
+        "numClasses": 2,
+        "classes": [
+            "Cello",
+            "Piano"
+        ]
+    },
+    {
+        "_id": 12,
+        "image": "https://i.ibb.co/dK9dR9H/pexels-nitin-khajotia-1516680.jpg",
+        "name": "Chloe Adams",
+        "email": "chloeadams@gmail.com",
+        "numClasses": 1,
+        "classes": [
+            "Harp"
+        ]
+    },
+    {
+        "_id": 13,
+        "image": "https://i.ibb.co/0rXgdb3/pexels-italo-melo-2379004.jpg",
+        "name": "William Turner",
+        "email": "williamturner@gmail.com",
+        "numClasses": 1,
+        "classes": [
+            "Electric Guitar"
+        ]
+    },
+    {
+        "_id": 14,
+        "image": "https://i.ibb.co/VxQNJZt/pexels-justin-shaifer-1222271.jpg",
+        "name": "Olivia Roberts",
+        "email": "oliviaroberts@gmail.com",
+        "numClasses": 1,
+        "classes": [
+            "Ukulele"
+        ]
+    },
+    {
+        "_id": 15,
+        "image": "https://i.ibb.co/ThTSBdY/pexels-pixabay-220453.jpg",
+        "name": "Liam Anderson",
+        "email": "liamanderson@gmail.com",
+        "numClasses": 0,
+        "classes": []
+    },
+    {
+        "_id": 16,
+        "image": "https://i.ibb.co/3vw1Hvh/pexels-yaroslava-borz-10049576.jpg",
+        "name": "Harper Garcia",
+        "email": "harpergarcia@gmail.com",
+        "numClasses": 1,
+        "classes": [
+            "Clarinet"
+        ]
+    },
+    {
+        "_id": 17,
+        "image": "https://i.ibb.co/Xs7T9wh/pexels-paige-deasley-9789893.jpg",
+        "name": "Ella Wright",
+        "email": "ellawright@gmail.com",
+        "numClasses": 1,
+        "classes": [
+            "Tabla"
+        ]
+    },
+    {
+        "_id": 18,
+        "image": "https://i.ibb.co/yk4dD5s/pexels-yaroslava-borz-10057618.jpg",
+        "name": "Alexander Ramirez",
+        "email": "alexanderramirez@gmail.com",
+        "numClasses": 2,
+        "classes": [
+            "Piano",
+            "Guitar"
+        ]
+    },
+    {
+        "_id": 19,
+        "image": "https://i.ibb.co/hZf59TQ/pexels-wendy-wei-1699159.jpg",
+        "name": "Victoria King",
+        "email": "victoriaking@gmail.com",
+        "numClasses": 1,
+        "classes": [
+            "Violin"
+        ]
+    }
+]
