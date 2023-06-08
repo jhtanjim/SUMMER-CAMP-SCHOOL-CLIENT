@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import { FaDatabase, FaCartPlus } from "react-icons/fa";
 
 
 
@@ -19,11 +20,16 @@ const Header = () => {
 
     }
     const navOptions = <>
-        <li className='text-xl'><Link to='/'>Home</Link></li>
-        <li className='text-xl'><Link to='/instuctors'>Instructors</Link></li>
-        <li className='text-xl'><Link to='/classes'>Classes</Link></li>
-        <li className='text-xl'><Link to='/dashboard'>Dashboard </Link></li>
-        <li className='text-xl'><Link to='/secret'>Secret</Link></li>
+        <li className='text-lg'><Link to='/'>Home</Link></li>
+        <li className='text-lg'><Link to='/instuctors'>Instructors</Link></li>
+        <li className='text-lg'><Link to='/classes'>Classes</Link></li>
+
+        <li className='text-lg'><Link to='/secret'>Secret</Link></li>
+        <li className='text-lg'><Link to='/secret'><button className="btn">
+            <FaCartPlus />
+
+            <div className="badge badge-outline">+0</div>
+        </button></Link></li>
 
 
 
@@ -39,7 +45,7 @@ const Header = () => {
     </>
     return (
         <div>
-            <div className="navbar fixed z-10 bg-opacity-70 h-24 bg-black text-white   ">
+            <div className="navbar fixed z-10 bg-opacity-70 h-12 bg-black text-white   ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">

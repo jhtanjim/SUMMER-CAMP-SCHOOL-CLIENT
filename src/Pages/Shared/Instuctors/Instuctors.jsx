@@ -2,7 +2,7 @@ import React from 'react';
 import UseInstuctor from '../../../Hooks/UseInstuctor/UseInstuctor';
 import Cover from '../Cover/Cover';
 import { Helmet } from 'react-helmet-async';
-import { FaCalculator, FaEnvelope, FaPersonBooth, FaSortNumericDown, FaTasks } from "react-icons/fa";
+import { FaEnvelope, FaTasks } from "react-icons/fa";
 
 const Instuctors = () => {
     const [loading, instructors] = UseInstuctor();

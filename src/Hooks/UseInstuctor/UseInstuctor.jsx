@@ -5,7 +5,7 @@ const UseInstuctor = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch('instuctorrs.json')
+        fetch('http://localhost:5000/instuctor')
             .then(res => res.json())
             .then(data => {
 
