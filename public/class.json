@@ -34,7 +34,7 @@
     },
     {
         "_id": 4,
-        "image": "https://example.com/image4.jpg",
+        "image": "https://i.ibb.co/FqzCQP1/pexels-mart-production-8471931.jpg",
         "name": "Violin Lessons",
         "instructor": "Sarah Thompson",
         "email": "sarahthompson@example.com",
@@ -45,7 +45,7 @@
     },
     {
         "_id": 5,
-        "image": "https://example.com/image5.jpg",
+        "image": "https://i.ibb.co/wchVqZ1/pexels-shvets-production-8929205.jpg",
         "name": "Saxophone Class",
         "instructor": "Daniel Wilson",
         "email": "danielwilson@example.com",
@@ -78,7 +78,7 @@
     },
     {
         "_id": 8,
-        "image": "https://example.com/image8.jpg",
+        "image": "https://i.ibb.co/HKyw1Wz/pexels-cottonbro-studio-4709857.jpg",
         "name": "Flute Lessons",
         "instructor": "Ava Wilson",
         "email": "avawilson@example.com",
@@ -89,7 +89,7 @@
     },
     {
         "_id": 9,
-        "image": "https://example.com/image9.jpg",
+        "image": "https://i.ibb.co/ZcYsFGT/pexels-pnw-production-7577333.jpg",
         "name": "Trumpet Class",
         "instructor": "James Miller",
         "email": "jamesmiller@example.com",
@@ -111,7 +111,7 @@
     },
     {
         "_id": 11,
-        "image": "https://example.com/image11.jpg",
+        "image": "https://i.ibb.co/Jt6vDMD/pexels-yan-krukau-8519712.jpg",
         "name": "Cello Lessons",
         "instructor": "Jacob Clark",
         "email": "jacobclark@example.com",
@@ -122,7 +122,7 @@
     },
     {
         "_id": 12,
-        "image": "https://example.com/image12.jpg",
+        "image": "https://i.ibb.co/fCZ5ttL/pexels-skitterphoto-951.jpg",
         "name": "Harp Class",
         "instructor": "Chloe Adams",
         "email": "chloeadams@example.com",
@@ -133,7 +133,7 @@
     },
     {
         "_id": 13,
-        "image": "https://example.com/image13.jpg",
+        "image": "https://i.ibb.co/jb3yK5w/pexels-pixabay-164835.jpg",
         "name": "Electric Guitar Workshop",
         "instructor": "William Turner",
         "email": "williamturner@example.com",
@@ -144,7 +144,7 @@
     },
     {
         "_id": 14,
-        "image": "https://example.com/image14.jpg",
+        "image": "https://i.ibb.co/WDggb46/pexels-ketut-subiyanto-4473444.jpg",
         "name": "Ukulele Class",
         "instructor": "Olivia Roberts",
         "email": "oliviaroberts@example.com",
@@ -155,7 +155,7 @@
     },
     {
         "_id": 15,
-        "image": "https://example.com/image15.jpg",
+        "image": "https://i.ibb.co/YjjhH6J/pexels-yan-krukau-8520102.jpg",
         "name": "Accordion Lessons",
         "instructor": "Liam Anderson",
         "email": "liamanderson@example.com",
@@ -166,7 +166,7 @@
     },
     {
         "_id": 16,
-        "image": "https://example.com/image16.jpg",
+        "image": "https://i.ibb.co/gDRyQZM/pexels-cottonbro-studio-7095727.jpg",
         "name": "Clarinet Class",
         "instructor": "Harper Garcia",
         "email": "harpergarcia@example.com",
@@ -177,7 +177,7 @@
     },
     {
         "_id": 17,
-        "image": "https://example.com/image17.jpg",
+        "image": "https://i.ibb.co/rfkK3Js/baby-gf29f54913-1280.jpg",
         "name": "Tabla Workshop",
         "instructor": "Ella Wright",
         "email": "ellawright@example.com",
@@ -188,7 +188,7 @@
     },
     {
         "_id": 18,
-        "image": "https://example.com/image18.jpg",
+        "image": "https://i.ibb.co/zXsD9tS/pexels-cottonbro-studio-7097789.jpg",
         "name": "Mandolin Lessons",
         "instructor": "Alexander Ramirez",
         "email": "alexanderramirez@example.com",
@@ -199,7 +199,7 @@
     },
     {
         "_id": 19,
-        "image": "https://example.com/image19.jpg",
+        "image": "https://i.ibb.co/8jDZPXT/pexels-pavel-danilyuk-9143511.jpg",
         "name": "Harmonica Class",
         "instructor": "Victoria Baker",
         "email": "victoriabaker@example.com",
@@ -210,7 +210,7 @@
     },
     {
         "_id": 20,
-        "image": "https://example.com/image20.jpg",
+        "image": "https://i.ibb.co/WnmnxFm/OBO-Oboe-spielen-Herausforderungen-nicht-unterschaetzen-Teaser-Website-1200x780.jpg",
         "name": "Oboe Lessons",
         "instructor": "Sebastian Morris",
         "email": "sebastianmorris@example.com",
