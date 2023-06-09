@@ -6,7 +6,7 @@ import UseClass from '../../../Hooks/UseClass/UseClass';
 const PopularClass = () => {
 
     const [classes] = UseClass()
-    const popularClass = classes.filter(item => item.popular === true)
+    const popularClasses = classes.filter(item => item.numOfStudent > 0).sort((a, b) => b.numOfStudent - a.numOfStudent).slice(0, 6);
 
     // const [classes, setClasses] = useState([])
     // useEffect(() => {
@@ -30,7 +30,7 @@ const PopularClass = () => {
             <div className='md:grid grid-cols-3 gap-4 max-w-screen-xl mx-auto'>
 
                 {
-                    popularClass.map(item => <PopularClassCard
+                    popularClasses.map(item => <PopularClassCard
                         key={item._id}
                         item={item}
 

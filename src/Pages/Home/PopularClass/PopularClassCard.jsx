@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PopularClassCard = ({ item }) => {
-    const { image, name } = item;
+    const { image, name, numOfStudent } = item;
     return (
 
         <div >
@@ -9,6 +9,7 @@ const PopularClassCard = ({ item }) => {
                 <figure><img src={image} alt="car!" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
+                    <h2 className="card-title">{numOfStudent}</h2>
 
                 </div>
             </div>

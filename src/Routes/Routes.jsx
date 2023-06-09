@@ -8,6 +8,8 @@ import FourOfour from "../Pages/Shared/fourOfour/fourOfour";
 import Classes from "../Pages/Shared/Classes/Classes";
 import Main from "../Layout/Main";
 import Instuctors from "../Pages/Shared/Instuctors/Instuctors";
+import DashBoard from "../Layout/DashBoard";
+import MySelectedClass from "../Pages/DashBoard/MySelectedClass/MySelectedClass";
 
 
 
@@ -38,7 +40,18 @@ export const router = createBrowserRouter([
                 element: <Instuctors></Instuctors>
             },
 
-        ]
+        ],
+
+    },
+    {
+        path: 'dashboard',
+        element: <DashBoard></DashBoard>,
+        children: [
+            {
+                path: 'MySelectedClass',
+                element: <MySelectedClass></MySelectedClass>
+            },
+        ],
     },
     {
         path: '*',

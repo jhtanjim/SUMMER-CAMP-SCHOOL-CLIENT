@@ -8,7 +8,7 @@
         "availableSeats": 10,
         "price": 50,
         "category": "Guitar",
-        "popular": true
+        "numOfStudent": 20
     },
     {
         "_id": 2,
@@ -19,7 +19,7 @@
         "availableSeats": 8,
         "price": 70,
         "category": "Piano",
-        "popular": true
+        "numOfStudent": 30
     },
     {
         "_id": 3,
@@ -30,7 +30,7 @@
         "availableSeats": 12,
         "price": 60,
         "category": "Drums",
-        "popular": true
+        "numOfStudent": 40
     },
     {
         "_id": 4,
@@ -41,7 +41,7 @@
         "availableSeats": 15,
         "price": 55,
         "category": "Violin",
-        "popular": false
+        "numOfStudent": 33
     },
     {
         "_id": 5,
@@ -52,7 +52,7 @@
         "availableSeats": 5,
         "price": 80,
         "category": "Saxophone",
-        "popular": false
+        "numOfStudent": 54
     },
     {
         "_id": 6,
@@ -63,7 +63,7 @@
         "availableSeats": 10,
         "price": 65,
         "category": "Bass Guitar",
-        "popular": true
+        "numOfStudent": 15
     },
     {
         "_id": 7,
@@ -74,7 +74,7 @@
         "availableSeats": 6,
         "price": 75,
         "category": "Vocals",
-        "popular": true
+        "numOfStudent": 30
     },
     {
         "_id": 8,
@@ -85,7 +85,7 @@
         "availableSeats": 8,
         "price": 60,
         "category": "Flute",
-        "popular": false
+        "numOfStudent": 20
     },
     {
         "_id": 9,
@@ -96,7 +96,7 @@
         "availableSeats": 12,
         "price": 45,
         "category": "Trumpet",
-        "popular": false
+        "numOfStudent": 22
     },
     {
         "_id": 10,
@@ -107,7 +107,7 @@
         "availableSeats": 4,
         "price": 90,
         "category": "Keyboard",
-        "popular": true
+        "numOfStudent": 21
     },
     {
         "_id": 11,
@@ -118,7 +118,7 @@
         "availableSeats": 7,
         "price": 70,
         "category": "Cello",
-        "popular": false
+        "numOfStudent": 22
     },
     {
         "_id": 12,
@@ -129,7 +129,7 @@
         "availableSeats": 10,
         "price": 55,
         "category": "Harp",
-        "popular": false
+        "numOfStudent": 21
     },
     {
         "_id": 13,
@@ -140,7 +140,7 @@
         "availableSeats": 15,
         "price": 60,
         "category": "Electric Guitar",
-        "popular": false
+        "numOfStudent": 40
     },
     {
         "_id": 14,
@@ -151,7 +151,7 @@
         "availableSeats": 10,
         "price": 40,
         "category": "Ukulele",
-        "popular": false
+        "numOfStudent": 40
     },
     {
         "_id": 15,
@@ -162,7 +162,7 @@
         "availableSeats": 8,
         "price": 50,
         "category": "Accordion",
-        "popular": false
+        "numOfStudent": 29
     },
     {
         "_id": 16,
@@ -173,7 +173,7 @@
         "availableSeats": 6,
         "price": 85,
         "category": "Clarinet",
-        "popular": false
+        "numOfStudent": 28
     },
     {
         "_id": 17,
@@ -184,7 +184,7 @@
         "availableSeats": 12,
         "price": 55,
         "category": "Tabla",
-        "popular": false
+        "numOfStudent": 25
     },
     {
         "_id": 18,
@@ -195,7 +195,7 @@
         "availableSeats": 10,
         "price": 60,
         "category": "Mandolin",
-        "popular": false
+        "numOfStudent": 24
     },
     {
         "_id": 19,
@@ -206,7 +206,7 @@
         "availableSeats": 6,
         "price": 70,
         "category": "Harmonica",
-        "popular": false
+        "numOfStudent": 46
     },
     {
         "_id": 20,
@@ -217,6 +217,6 @@
         "availableSeats": 8,
         "price": 75,
         "category": "Oboe",
-        "popular": false
+        "numOfStudent": 33
     }
 ]
