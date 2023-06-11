@@ -30,7 +30,7 @@ const DashBoard = () => {
                         // admin hole
                         isAdmin ? <>
                             <li>
-                                <NavLink to='/instuctorDashBoard'><FaSave /> Admin DashBoard
+                                <NavLink to='instuctorDashBoard'><FaSave /> Admin DashBoard
                                     <span className="badge badge-outline bg-indigo-500 text-white p-4 ">+{cart?.length || 0}</span>
                                 </NavLink>
 
@@ -39,7 +39,7 @@ const DashBoard = () => {
                                 <NavLink to='addClass'><FaBook />  Add Classes </NavLink>
                             </li>
                             <li>
-                                <NavLink to='MYclass'><FaBook />  My Classes </NavLink>
+                                <NavLink to='myclasses'><FaBook />  My Classes </NavLink>
                             </li>
                             <li>
                                 <NavLink to='PaymentHistory'><FaMoneyBill />  Payment History </NavLink>
@@ -63,8 +63,8 @@ const DashBoard = () => {
                             // student hole
                             <>
                                 <li>
-                                    <NavLink to='/studentDashBoard'><FaSave /> Student DashBoard
-                                        <span className="badge badge-outline bg-indigo-500 text-white p-4 ">+{cart?.length || 0}</span>
+                                    <NavLink to='studentDashBoard'><FaSave /> Student DashBoard
+
                                     </NavLink>
                                     <NavLink to='MySelectedClass'><FaSave />  My Selected Classes
                                         <span className="badge badge-outline bg-indigo-500 text-white p-4 ">+{cart?.length || 0}</span>

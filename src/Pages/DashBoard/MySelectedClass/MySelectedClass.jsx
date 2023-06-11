@@ -4,11 +4,11 @@ import useCarts from '../../../Hooks/useCarts/useCarts';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import { FaEdit, FaMoneyBill, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const MySelectedClass = () => {
     const [cart, refetch] = useCarts()
-    console.log(cart);
+    // console.log(cart);
     const total = cart.reduce((sum, item) => item.price + sum, 0);
 
 
@@ -58,7 +58,8 @@ const MySelectedClass = () => {
             <div className='uppercase h-[60px] mb-4 align-items-center font-semibold flex justify-evenly'>
                 <h3 className="text-3xl">Total Items : {cart.length}</h3>
                 <h3 className="text-3xl">Total Price : {total}</h3>
-                <Link to='/dashboard/payment'><button className="btn btn-secondary  btn-sm"> <FaMoneyBill /> Pay</button></Link>
+                <Link to='/dashboard/payment'><button className="btn btn-warning  btn-sm">Pay</button></Link>
+
 
             </div>
             <div className="overflow-x-auto w-full">

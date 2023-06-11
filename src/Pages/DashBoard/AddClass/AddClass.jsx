@@ -24,13 +24,15 @@ const AddClass = () => {
             .then(imgResponse => {
                 if (imgResponse.success) {
                     const imgUrl = imgResponse.data.display_url
-                    const { name, seat, price, instructorName, email } = data
+                    const { name, seat, price, instructor, email } = data
 
                     console.log(data);
                     const newClass = {
                         name,
                         price: parseFloat(price),
-                        seat, image: imgUrl, instructorName, email
+                        seat, image: imgUrl, instructor, email,
+                        statusbar: 'pending',
+                        enrolled: 0
                     }
                     console.log(newClass);
                     axiosSecure.post('/class', newClass)
@@ -88,10 +90,10 @@ const AddClass = () => {
                     </label>
                     <input
                         type="text"
-                        {...register('instructorName', { required: true })}
+                        {...register('instructor', { required: true })}
                         name="name"
                         placeholder="Name"
-                        className={`input input-bordered ${errors.instructorName ? 'input-error' : ''}`}
+                        className={`input input-bordered ${errors.instructor ? 'input-error' : ''}`}
                         readOnly
                         value={user.displayName}
                     />
@@ -105,7 +107,7 @@ const AddClass = () => {
                     </label>
                     <input
                         type="text"
-                        {...register('instructorEmail', { required: true })}
+                        {...register('email', { required: true })}
                         name="email"
                         placeholder="Email"
                         className={`input input-bordered ${errors.instructorEmail ? 'input-error' : ''}`}

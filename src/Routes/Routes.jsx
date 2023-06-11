@@ -11,10 +11,14 @@ import Instuctors from "../Pages/Shared/Instuctors/Instuctors";
 import DashBoard from "../Layout/DashBoard";
 import MySelectedClass from "../Pages/DashBoard/MySelectedClass/MySelectedClass";
 import PrivateRoutes from "./PrivateRoutes";
-import ManageClasses from "../Pages/DashBoard/MySelectedClass/ManageClasses/ManageClasses";
+
 import ManageUsers from "../Pages/DashBoard/ManageUsers/ManageUsers";
 import AddClass from "../Pages/DashBoard/AddClass/AddClass";
 import AdminRoute from "./AdminRoute";
+import MyClasses from "../Pages/DashBoard/MyClasses/MyClasses";
+import ManageClasses from "../Pages/DashBoard/ManageClasses/ManageClasses";
+import Payment from "../Pages/DashBoard/Payment/Payment";
+import MyEnrolledClass from "../Pages/DashBoard/MyEnrolledClass/MyEnrolledClass";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -48,16 +52,21 @@ export const router = createBrowserRouter([
     {
         path: 'dashboard',
         element: <PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
-
         children: [
             {
                 path: 'MySelectedClass',
                 element: <MySelectedClass></MySelectedClass>
             },
+
             {
-                path: 'manageClasses',
-                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+                path: 'payment',
+                element: <Payment></Payment>
             },
+            {
+                path: 'MyEnrolledClass',
+                element: <MyEnrolledClass></MyEnrolledClass>
+            },
+
             {
                 path: 'manageUsers',
                 element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
@@ -65,6 +74,14 @@ export const router = createBrowserRouter([
             {
                 path: 'addClass',
                 element: <AddClass></AddClass>
+            },
+            {
+                path: 'myclasses',
+                element: <MyClasses></MyClasses>
+            },
+            {
+                path: 'manageClasses',
+                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
             },
         ],
     },

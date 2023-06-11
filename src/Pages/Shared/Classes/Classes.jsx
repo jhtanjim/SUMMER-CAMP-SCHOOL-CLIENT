@@ -21,8 +21,10 @@ const Classes = () => {
 
     const handleSelect = classItem => {
 
-        const { _id, image, name, email, numClasses, classes, price } = classItem
+        let { _id, image, name, email, numClasses, classes, price, statusbar, enrolled } = classItem
+        enrolled++
         if (user && user.email) {
+
             const selectItem = { classItem: _id, name, image, email: user.email, price }
             fetch('http://localhost:5000/carts', {
                 method: 'POST',
@@ -73,6 +75,7 @@ const Classes = () => {
             ></Cover>
             <div className="my-20 grid gap-8 xl:grid-cols-4  mx-12">
                 {classes.map((classItem) => (
+                    classItem.statusbar === 'approved' &&
                     <div className="card w-full my-4 bg-base-100 shadow-xl border border-black border-opacity-30 lg:p-8">
                         <figure><img className='rounded-xl' src={classItem.image} alt="Shoes" /></figure>
                         <div className="card-body">
@@ -84,14 +87,15 @@ const Classes = () => {
                                 Price: <FaDollarSign />{classItem.price}
 
                             </h2>
-                            <h2 className="card-title  lg:text-xl font-bold mt-3">
+                            <h2 className="card-title  lg:text-lg font-bold mt-3">
                                 <FaIdBadge /> <span className='underline'>Instuctor:</span>  {classItem.instructor}
 
                             </h2>
                             <h2 className="card-title sm:text-xs lg:text-xl font-bold my-3">
-                                <FaChair /> <span className='underline'>Available Seat:</span> <span className=''> {classItem.availableSeats}</span>
+                                <FaChair /> <span className='underline'>Available Seat:</span> <span className=''> {classItem.seat}</span>
 
                             </h2>
+                            <h2>{classItem.numOfStudent}</h2>
                             <button onClick={() => handleSelect(classItem)} className="btn btn-primary mt-3 font-bold text-xl">Select</button>
 
                         </div>
