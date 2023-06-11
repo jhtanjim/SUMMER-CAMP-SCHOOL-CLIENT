@@ -8,7 +8,7 @@ import About from '../About/About';
 
 const Home = () => {
     return (
-        <div >
+        <div className='' >
             <Helmet>
                 <title>Summer Camp | Home</title>
             </Helmet>

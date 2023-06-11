@@ -36,9 +36,9 @@ const Classes = () => {
                     if (data.insertedId) {
                         refetch()
                         Swal.fire({
-                            position: 'top-end',
+                            position: 'center',
                             icon: 'success',
-                            title: 'Class added on the cart',
+                            title: 'Class has been Addeded',
                             showConfirmButton: false,
                             timer: 1500
                         })

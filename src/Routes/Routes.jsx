@@ -10,9 +10,11 @@ import Main from "../Layout/Main";
 import Instuctors from "../Pages/Shared/Instuctors/Instuctors";
 import DashBoard from "../Layout/DashBoard";
 import MySelectedClass from "../Pages/DashBoard/MySelectedClass/MySelectedClass";
-
-
-
+import PrivateRoutes from "./PrivateRoutes";
+import ManageClasses from "../Pages/DashBoard/MySelectedClass/ManageClasses/ManageClasses";
+import ManageUsers from "../Pages/DashBoard/ManageUsers/ManageUsers";
+import AddClass from "../Pages/DashBoard/AddClass/AddClass";
+import AdminRoute from "./AdminRoute";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -45,11 +47,24 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <DashBoard></DashBoard>,
+        element: <PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
+
         children: [
             {
                 path: 'MySelectedClass',
                 element: <MySelectedClass></MySelectedClass>
+            },
+            {
+                path: 'manageClasses',
+                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+            },
+            {
+                path: 'manageUsers',
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+            },
+            {
+                path: 'addClass',
+                element: <AddClass></AddClass>
             },
         ],
     },

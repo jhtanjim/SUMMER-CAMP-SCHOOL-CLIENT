@@ -22,20 +22,20 @@ const Header = () => {
         <li className='text-lg'><Link to='/instuctors'>Instructors</Link></li>
         <li className='text-lg'><Link to='/classes'>Classes</Link></li>
 
+        <li className='text-lg'><Link to='/dashboard/MySelectedClass'><button className="btn btn-sm">
+            <FaCartPlus />
 
+            <div className="badge badge-outline ">+{cart?.length || 0}</div>
+        </button></Link></li>
 
 
 
         {
             // user takle
             user ? <>
-                <button onClick={handleLogOut} className="btn btn-error btn-sm">Log Out</button>
+                <button onClick={handleLogOut} className="btn btn-sm btn-error ">Log Out</button>
 
-                <li className='text-lg'><Link to='/dashboard/MySelectedClass'><button className="btn btn-sm">
-                    <FaCartPlus />
 
-                    <div className="badge badge-outline ">+{cart?.length || 0}</div>
-                </button></Link></li>
             </> :
                 // user na thakle
                 <>

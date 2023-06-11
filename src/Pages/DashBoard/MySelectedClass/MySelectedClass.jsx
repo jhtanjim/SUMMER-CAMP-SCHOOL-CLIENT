@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 
 const MySelectedClass = () => {
-    const [cart] = useCarts()
+    const [cart, refetch] = useCarts()
     console.log(cart);
     const total = cart.reduce((sum, item) => item.price + sum, 0);
 
@@ -33,7 +33,7 @@ const MySelectedClass = () => {
                             refetch()
                             Swal.fire(
                                 'Deleted!',
-                                'Your file has been deleted.',
+                                'Class has been Drop.',
                                 'success'
                             )
                         }
