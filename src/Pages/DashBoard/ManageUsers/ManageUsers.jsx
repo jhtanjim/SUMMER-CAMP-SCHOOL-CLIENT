@@ -40,7 +40,6 @@ const ManageUsers = () => {
 
     const handleMakeInstuctor = user => {
         fetch(`http://localhost:5000/users/instuctor/${user._id}`, {
-
             method: 'PATCH'
 
         })
@@ -70,7 +69,7 @@ const ManageUsers = () => {
     return (
         <div className='w-full'>
             <Helmet>
-                <title>Summer Camp | Manage Users </title>
+                <title>Bajao | Manage Users </title>
             </Helmet>
 
             <h3 className="text-3xl font-semibold my-4">Total Users:   {users.length}</h3>

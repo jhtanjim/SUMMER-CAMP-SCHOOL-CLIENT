@@ -1,53 +1,38 @@
-import React from 'react';
-import UseInstuctor from '../../../Hooks/UseInstuctor/UseInstuctor';
-import Cover from '../Cover/Cover';
-import { Helmet } from 'react-helmet-async';
-import { FaEnvelope, FaTasks } from "react-icons/fa";
+import React, { useEffect, useState } from 'react';
 
-const Instuctors = () => {
-    const [loading, instructors] = UseInstuctor();
+const InstructorData = () => {
+    const [instructors, setInstructors] = useState([]);
 
-    if (loading) {
-        return <p>Loading...</p>; // Add a loading indicator while data is being fetched
-    }
+    useEffect(() => {
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/users');
+                const data = await response.json();
+                const filteredInstructors = data.filter(item => item.role === 'instuctor');
+                setInstructors(filteredInstructors);
+                console.log(filteredInstructors);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
-        <div>
-            <Helmet>
-                <title>Summer Camp | Instructor</title>
-            </Helmet>
-            <Cover
-                img='https://i.ibb.co/QpVFWG2/pexels-kindel-media-7149181.jpg'
-                title="Our Instructors"
-            ></Cover>
-            <div className='md:grid grid-cols-2 max-w-screen-2xl mx-auto space-y-8 gap-8 my-16 '>
-                {instructors.map((instructor, index) => (
-                    <div key={index} className="card lg:card-side bg-base-100 shadow-2xl border py-8">
-                        <figure>
-                            <img className="w-full h-80 object-cover object-center ms-8 rounded-2xl" src={instructor.image} alt="Album" />
-                        </figure>
-                        <div className="card-body">
-                            <h2 className="card-title lg:text-4xl font-bold">{instructor.name}</h2>
-                            <h2 className='text-2xl font-semibold flex items-center space-x-4 my-2'>
-                                <FaEnvelope />
-                                <span>{instructor.email}</span></h2>
-
-                            <h2 className='text-2xl font-semibold flex items-center gap-4'>
-                                <FaTasks />
-                                <span>Number of Classes Taken: {instructor.numClasses}</span>
-                            </h2>
-                            <div className='pt-20 text-end'>
-
-                                <button className="btn btn-primary">See Classes</button>
-                            </div>
-
-
-                        </div>
+        <div className="flex flex-wrap justify-center">
+            {instructors.map(instructor => (
+                <div key={instructor._id} className="max-w-sm mx-4 my-6 bg-white rounded-lg shadow-lg">
+                    <img src={instructor.image} alt={instructor.name} className="object-cover w-full h-48" />
+                    <div className="px-6 py-4">
+                        <div className="font-bold text-xl mb-2">{instructor.name}</div>
+                        <p className="text-gray-700 text-base">{instructor.email}</p>
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
         </div>
     );
-};
+}
 
-export default Instuctors;
+export default InstructorData;

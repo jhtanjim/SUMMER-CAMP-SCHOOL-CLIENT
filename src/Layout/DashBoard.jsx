@@ -31,7 +31,7 @@ const DashBoard = () => {
                         isAdmin ? <>
                             <li>
                                 <NavLink to='instuctorDashBoard'><FaSave /> Admin DashBoard
-                                    <span className="badge badge-outline bg-indigo-500 text-white p-4 ">+{cart?.length || 0}</span>
+
                                 </NavLink>
 
                             </li>

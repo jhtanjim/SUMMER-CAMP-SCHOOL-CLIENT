@@ -121,7 +121,7 @@ const ManageClasses = () => {
                                     </td>
                                     <td>{item.totalStudents}</td>
                                     <td>
-                                        {/* Render feedback component or display feedback */}
+                                        <button className='btn-sm btn-danger'>FeedBack</button>
                                     </td>
                                     <td>
                                         <button className="btn btn-ghost  bg-orange-700  text-white">

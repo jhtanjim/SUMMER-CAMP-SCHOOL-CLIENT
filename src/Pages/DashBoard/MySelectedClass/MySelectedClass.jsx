@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import useCarts from '../../../Hooks/useCarts/useCarts';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
-import { FaEdit, FaMoneyBill, FaTrashAlt } from 'react-icons/fa';
+import { FaDollarSign, FaEdit, FaMoneyBill, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -52,13 +52,13 @@ const MySelectedClass = () => {
             ></SectionTitle>
 
             <Helmet>
-                <title>Summer Camp | MySelectedClass</title>
+                <title>Bajao | MySelectedClass</title>
             </Helmet>
 
             <div className='uppercase h-[60px] mb-4 align-items-center font-semibold flex justify-evenly'>
                 <h3 className="text-3xl">Total Items : {cart.length}</h3>
                 <h3 className="text-3xl">Total Price : {total}</h3>
-                <Link to='/dashboard/payment'><button className="btn btn-warning  btn-sm">Pay</button></Link>
+                <Link to='/dashboard/payment'><button className="btn btn-primary  btn-sm"> <FaDollarSign /> Pay</button></Link>
 
 
             </div>

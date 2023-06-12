@@ -1,49 +1,54 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import useCarts from '../../../Hooks/useCarts/useCarts';
+import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
+import { Helmet } from 'react-helmet-async';
 
 const MyEnrolledClass = () => {
-    const [cart] = useCarts();
+    const [enrolledClass, setEnrolledClass] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/payments')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setEnrolledClass(data);
+            });
+    }, []);
 
     return (
         <div>
             <SectionTitle subHeading="My Enrolled Class" heading="Enrolled Classes" />
 
             <Helmet>
-                <title>Summer Camp | MyEnrolledClass</title>
+                <title>Bajao | MyEnrolledClass</title>
             </Helmet>
 
-            <div className="overflow-x-auto w-full">
-                <table className="table w-full">
-                    <thead>
-                        <tr className="font-bold">
-                            <th>#</th>
-                            <th>Image</th>
-                            <th>Class Name</th>
-                            <th>Price</th>
+            <table className="table w-full">
+                {/* head */}
+                <thead>
+                    <tr className="font-bold">
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Class Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {enrolledClass.map((classItem, index) => (
+                        <tr key={classItem._id.$oid}>
+                            <td>{index + 1}</td>
+                            <td className='flex gap-4'>
+                                {classItem.itemImage.map((image, imageIndex) => (
+                                    <img key={imageIndex} src={image} alt={classItem.itemNames[imageIndex]} className="w-10 h-10" />
+                                ))}
+                            </td>
+                            <td>{classItem.itemNames.join(', ')}</td>
+                            <td> ${classItem.price}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {cart.map((item, index) => (
-                            <tr key={item._id}>
-                                <td>{index + 1}</td>
-                                <td>
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src={item.image} alt="Avatar Tailwind CSS Component" />
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>{item.name}</td>
-                                <td className="">${item.price}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
-};
+}
 
 export default MyEnrolledClass;

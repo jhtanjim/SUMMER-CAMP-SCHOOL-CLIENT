@@ -67,7 +67,7 @@ const Classes = () => {
     return (
         <div className=''>
             <Helmet>
-                <title>Summer Camp | Classes</title>
+                <title>Bajao | Classes</title>
             </Helmet>
             <Cover
                 img='https://i.ibb.co/C9ZvJLF/pexels-mart-production-8471826.jpg'

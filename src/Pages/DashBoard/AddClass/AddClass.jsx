@@ -51,7 +51,7 @@ const AddClass = () => {
                 }
             })
     };
-    console.log(img_hosting_token);
+    // console.log(img_hosting_token);
     return (
         <div>
             <SectionTitle subHeading="Add Class" heading="Add Class" />

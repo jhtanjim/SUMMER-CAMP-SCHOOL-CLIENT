@@ -46,11 +46,11 @@ const Login = () => {
                     </div>
                     <div className="card  md:w-1/2 max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(handleLogin)} className="card-body">
-                            <div className="form-control">
+                            <div className="form-control ">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" required {...register('email')} placeholder="email" className="input input-bordered" />
+                                <input type="email" required {...register('email')} placeholder="email" className="input input-bordered " />
                             </div>
                             <div className="form-control">
                                 <label className="label">
