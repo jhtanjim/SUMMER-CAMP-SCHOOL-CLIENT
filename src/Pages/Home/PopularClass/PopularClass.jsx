@@ -7,8 +7,9 @@ import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCarts from '../../../Hooks/useCarts/useCarts';
 import { useContext } from 'react';
+import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 
-const Classes = () => {
+const PopularClass = () => {
     const [classes] = UseClass();
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
@@ -94,42 +95,36 @@ const Classes = () => {
     };
 
     return (
-        <div className=''>
-            <Helmet>
-                <title>Bajao | Classes</title>
-            </Helmet>
+        <div>
 
-            <div className="my-20 grid gap-8 xl:grid-cols-4  mx-12">
+            <SectionTitle
+                subHeading='Popular Class'
+                heading='Popular Class'
+            ></SectionTitle>
+            <div className="grid gap-x-4 gap-y-4 sm:grid-cols-1 lg:grid-cols-3 max-w-screen-xl mx-auto">
                 {topClasses.map(classItem => (
                     classItem.statusbar === 'approved' && (
                         <div
                             key={classItem._id}
-                            className="card w-full my-4 bg-base-100 shadow-xl border border-black border-opacity-30 lg:p-8"
+                            className="card w-full bg-base-100 shadow-xl border border-black border-opacity-30 lg:p-8"
                         >
                             <figure>
                                 <img className='rounded-xl' src={classItem.image} alt="Shoes" />
                             </figure>
                             <div className="card-body">
-                                <h2 className="card-title sm:text-xs lg:text-xl font-bold">
+                                <h2 className="card-title text-lg font-bold">
                                     <FaList /> {classItem.name}
                                 </h2>
-                                <h2 className="card-title sm:text-xs lg:text-xl font-bold">
+                                <h2 className="card-title text-lg font-bold">
                                     Price: <FaDollarSign />{classItem.price}
                                 </h2>
-                                <h1 className="card-title lg:text-lg font-bold mt-3">
+                                <h1 className="card-title text-md font-bold mt-3">
                                     <FaIdBadge /> <span className='underline'>Instructor:</span> {classItem.instructor}
                                 </h1>
-                                <h2 className="card-title sm:text-xs lg:text-xl font-bold my-3">
-                                    <FaChair /> <span className='underline'>Available Seat:</span> <span className=''> {classItem.seat}</span>
+                                <h2 className="card-title text-lg font-bold my-3">
+                                    <FaChair /> <span className='underline'>Available Seat:</span> <span className=''>{classItem.seat}</span>
                                 </h2>
                                 <h2>Number of Students: {numOfStudent[classItem.name] || 0}</h2>
-                                <button
-                                    onClick={() => handleSelect(classItem)}
-                                    className="btn btn-primary mt-3 font-bold text-xl"
-                                    disabled={selectedClasses.includes(classItem._id)}
-                                >
-                                    {selectedClasses.includes(classItem._id) ? 'Selected' : 'Select'}
-                                </button>
                             </div>
                         </div>
                     )
@@ -139,4 +134,4 @@ const Classes = () => {
     );
 };
 
-export default Classes;
+export default PopularClass;

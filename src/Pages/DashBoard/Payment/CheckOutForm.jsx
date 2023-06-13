@@ -5,6 +5,7 @@ import './CheckoutForm.css'
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const CheckoutForm = ({ cart, price }) => {
@@ -98,6 +99,13 @@ const CheckoutForm = ({ cart, price }) => {
                     console.log(res.data);
                     if (res.data.insertedId) {
                         // display confirm
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Payment Successfull',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     }
                 })
         }

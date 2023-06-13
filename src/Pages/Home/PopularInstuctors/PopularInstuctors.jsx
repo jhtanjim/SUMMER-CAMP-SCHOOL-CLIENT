@@ -20,11 +20,12 @@ const PopularInstuctors = () => {
 
     return (
         <div className='my-32 	'>
+
             <SectionTitle
                 subHeading='Popular Instructor'
                 heading='Popular Instructor'
             ></SectionTitle>
-            <div className='md:grid grid-cols-3 max-w-screen-2xl mx-auto space-y-8 '>
+            <div className='lg:grid grid-cols-3  gap-4 lg:max-w-screen-xl   mx-auto space-y-8 '>
                 {instructors.map(instructor => (
                     <PopularInstuctorCard
                         key={instructor.id}

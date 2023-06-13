@@ -8,7 +8,7 @@ import About from '../About/About';
 
 const Home = () => {
     return (
-        <div className='' >
+        <div className='w-full' >
             <Helmet>
                 <title>Bajao | Home</title>
             </Helmet>

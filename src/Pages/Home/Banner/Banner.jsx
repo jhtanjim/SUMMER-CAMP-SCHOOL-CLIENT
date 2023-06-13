@@ -18,11 +18,15 @@ const Banner = () => {
     };
 
     const headingStyles = {
-        fontSize: '24px',
+        fontSize: '70px',
+        fontWeight: 'bold',
+        textTransform: 'uppercase', // Add this property
+
     };
 
     const descriptionStyles = {
-        fontSize: '16px',
+        fontSize: '20px',
+        fontWeight: 'semiBold',
     };
 
     return (
@@ -35,10 +39,11 @@ const Banner = () => {
                         alt="Slider 1"
                     />
                     <div style={overlayStyles}>
-                        <h2 style={headingStyles}>Learn to Play an Instrument</h2>
+                        <h2 className="whitespace-nowrap" style={headingStyles}>
+                            Learn to Play an Instrument
+                        </h2>
                         <p style={descriptionStyles}>
-                            Explore our wide range of music lessons and learn to play your
-                            favorite instrument.
+                            Explore our wide range of music lessons and learn to play your favorite instrument.
                         </p>
                     </div>
                 </div>
@@ -49,10 +54,9 @@ const Banner = () => {
                         alt="Slider 2"
                     />
                     <div style={overlayStyles}>
-                        <h2 style={headingStyles}>Music Theory and Composition</h2>
+                        <h2 style={headingStyles}> Learn Music Theory </h2>
                         <p style={descriptionStyles}>
-                            Dive into the world of music theory and composition and unlock
-                            your creativity.
+                            Dive into the world of music theory and composition and unlock your creativity.
                         </p>
                     </div>
                 </div>
@@ -65,8 +69,7 @@ const Banner = () => {
                     <div style={overlayStyles}>
                         <h2 style={headingStyles}>Discover Various Genres</h2>
                         <p style={descriptionStyles}>
-                            Experience the beauty of different music genres and broaden your
-                            musical horizons.
+                            Experience the beauty of different music genres and broaden your musical horizons.
                         </p>
                     </div>
                 </div>
@@ -79,8 +82,7 @@ const Banner = () => {
                     <div style={overlayStyles}>
                         <h2 style={headingStyles}>Join a Music Community</h2>
                         <p style={descriptionStyles}>
-                            Connect with fellow music enthusiasts, collaborate, and share your
-                            passion for music.
+                            Connect with fellow music enthusiasts, collaborate, and share your passion for music.
                         </p>
                     </div>
                 </div>

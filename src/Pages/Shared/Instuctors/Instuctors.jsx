@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Cover from '../Cover/Cover';
 
 const InstructorData = () => {
     const [instructors, setInstructors] = useState([]);
@@ -28,19 +29,22 @@ const InstructorData = () => {
 
 
 
+        <div>
 
+            <Cover img='https://i.ibb.co/VJZ8sgd/pexels-kindel-media-7149181.jpg' title="Instructor" />
 
+            <div className="my-20 grid gap-8 xl:grid-cols-4  mx-12">
 
-        <div className="flex flex-wrap justify-center">
-            {instructors.map(instructor => (
-                <div key={instructor._id} className="max-w-sm mx-4 my-6 bg-white rounded-lg shadow-lg">
-                    <img src={instructor.image} alt={instructor.name} className="object-cover w-full h-48" />
-                    <div className="px-6 py-4">
-                        <div className="font-bold text-xl mb-2">{instructor.name}</div>
-                        <p className="text-gray-700 text-base">{instructor.email}</p>
+                {instructors.map(instructor => (
+                    <div key={instructor._id} className="max-w-sm mx-4 my-6 bg-white rounded-lg shadow-lg">
+                        <img src={instructor.image} alt={instructor.name} className="object-cover w-full h-48" />
+                        <div className="px-6 py-4">
+                            <div className="font-bold text-xl mb-2">{instructor.name}</div>
+                            <p className="text-gray-700 text-base">{instructor.email}</p>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 }

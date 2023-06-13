@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 
 const PaymentHistory = () => {
     const [history, setHistory] = useState([]);
@@ -18,6 +19,10 @@ const PaymentHistory = () => {
             <Helmet>
                 <title>Bajao | Payment History</title>
             </Helmet>
+            <SectionTitle
+                subHeading='Payment History'
+                heading='Payment History'
+            ></SectionTitle>
             <table className="table w-full">
                 {/* head */}
                 <thead>

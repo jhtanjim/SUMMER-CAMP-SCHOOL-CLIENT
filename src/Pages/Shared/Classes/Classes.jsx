@@ -89,7 +89,7 @@ const Classes = () => {
             <Helmet>
                 <title>Bajao | Classes</title>
             </Helmet>
-            <Cover img='https://i.ibb.co/C9ZvJLF/pexels-mart-production-8471826.jpg' title="Music Classes" />
+            <Cover img='https://i.ibb.co/0XjrmrG/pexels-tim-powellmorris-5371625.jpg' title="Music Classes" />
             <div className="my-20 grid gap-8 xl:grid-cols-4  mx-12">
                 {classes.map(classItem => (
                     classItem.statusbar === 'approved' && (

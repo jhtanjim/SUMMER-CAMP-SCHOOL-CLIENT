@@ -37,6 +37,7 @@ const AddClass = () => {
                         email,
                         userImage,
                         statusbar: 'pending',
+                        feedback: '',
                         enrolled: 0
                     };
                     console.log(newClass);
