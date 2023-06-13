@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import { Helmet } from 'react-helmet-async';
+import { useContext } from 'react';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const MyEnrolledClass = () => {
-    const [enrolledClass, setEnrolledClass] = useState([]);
+    const { user } = useContext(AuthContext);
+    const [history, setHistory] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:5000/payments')
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
-                setEnrolledClass(data);
+                const filteredHistory = data.filter((payment) => payment.email === user.email);
+                const sortedHistory = filteredHistory.sort((a, b) => b.date.localeCompare(a.date));
+                setHistory(sortedHistory);
             });
-    }, []);
+    }, [user.email]);
 
     return (
         <div>
@@ -33,7 +37,7 @@ const MyEnrolledClass = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {enrolledClass.map((classItem, index) => (
+                    {history.map((classItem, index) => (
                         <tr key={classItem._id}>
                             <td>{index + 1}</td>
                             <td>

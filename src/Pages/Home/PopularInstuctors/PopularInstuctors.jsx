@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
-import PopularInstuctorCard from './PopularInstuctorCard';
 
 const PopularInstuctors = () => {
     const [instructors, setInstructors] = useState([]);
 
     useEffect(() => {
-        fetch('instuctorrs.json')
-            .then(res => res.json())
-            .then(data => {
-                // Sort instructors based on the number of students in their class
-                const sortedInstructors = data.sort((a, b) => b.numClasses - a.numClasses);
-                // Get the top 6 instructors
-                const popularInstructors = sortedInstructors.slice(0, 6);
-                // Update the state with popular instructors
-                setInstructors(popularInstructors);
-            });
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/users');
+                const data = await response.json();
+                const filteredInstructors = data
+                    .filter(item => item.role === 'instuctor')
+                    .slice(0, 6); // Slice to get only the top 6 instructors
+                setInstructors(filteredInstructors);
+                console.log(filteredInstructors);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     return (
-        <div className='my-32 	'>
-
+        <div>
             <SectionTitle
-                subHeading='Popular Instructor'
-                heading='Popular Instructor'
-            ></SectionTitle>
-            <div className='lg:grid grid-cols-3  gap-4 lg:max-w-screen-xl   mx-auto space-y-8 '>
+                subHeading="Popular Instructor" heading="Popular Instructor" />
+
+            <div className="grid gap-x-4  sm:grid-cols-1 lg:grid-cols-3 max-w-screen-xl mx-auto sm:mx-48">
                 {instructors.map(instructor => (
-                    <PopularInstuctorCard
-                        key={instructor.id}
-                        instructor={instructor}
-                    />
+                    <div key={instructor._id} className="max-w-sm mx-4 my-6 bg-white rounded-lg shadow-lg">
+                        <img src={instructor.image} alt={instructor.name} className="object-cover w-full h-60" />
+                        <div className="px-6 py-4">
+                            <div className="font-bold text-xl mb-2">{instructor.name}</div>
+                            <p className="text-gray-700 text-base">{instructor.email}</p>
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>

@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCarts from '../../../Hooks/useCarts/useCarts';
 import { useContext } from 'react';
+import UseAdmin from '../../../Hooks/UseAdmin';
+import UseInstructor from '../../../Hooks/UseInstuctor';
 
 const Classes = () => {
     const [classes] = UseClass();
@@ -17,6 +19,9 @@ const Classes = () => {
     const location = useLocation();
     const [selectedClasses, setSelectedClasses] = useState([]);
     const [numOfStudent, setNumOfStudent] = useState({});
+
+    const [isAdmin] = UseAdmin();
+    const [isInstructor] = UseInstructor();
 
     useEffect(() => {
         fetch('http://localhost:5000/payments')
@@ -89,7 +94,7 @@ const Classes = () => {
             <Helmet>
                 <title>Bajao | Classes</title>
             </Helmet>
-            <Cover img='https://i.ibb.co/0XjrmrG/pexels-tim-powellmorris-5371625.jpg' title="Music Classes" />
+            <Cover img='https://i.ibb.co/C9ZvJLF/pexels-mart-production-8471826.jpg' title="Music Classes" />
             <div className="my-20 grid gap-8 xl:grid-cols-4  mx-12">
                 {classes.map(classItem => (
                     classItem.statusbar === 'approved' && (
@@ -117,7 +122,7 @@ const Classes = () => {
                                 <button
                                     onClick={() => handleSelect(classItem)}
                                     className="btn btn-primary mt-3 font-bold text-xl"
-                                    disabled={selectedClasses.includes(classItem._id)}
+                                    disabled={isAdmin || isInstructor || selectedClasses.includes(classItem._id)}
                                 >
                                     {selectedClasses.includes(classItem._id) ? 'Selected' : 'Select'}
                                 </button>

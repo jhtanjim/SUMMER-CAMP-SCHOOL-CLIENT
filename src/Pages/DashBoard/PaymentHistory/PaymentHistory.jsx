@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const PaymentHistory = () => {
+    const { user } = useContext(AuthContext);
     const [history, setHistory] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:5000/payments')
             .then((res) => res.json())
             .then((data) => {
-                const sortedHistory = data.sort((a, b) => b.date.localeCompare(a.date));
+                const filteredHistory = data.filter((payment) => payment.email === user.email);
+                const sortedHistory = filteredHistory.sort((a, b) => b.date.localeCompare(a.date));
                 setHistory(sortedHistory);
             });
-    }, []);
+    }, [user.email]);
 
     return (
         <div className="overflow-x-auto w-full">
@@ -20,11 +23,10 @@ const PaymentHistory = () => {
                 <title>Bajao | Payment History</title>
             </Helmet>
             <SectionTitle
-                subHeading='Payment History'
-                heading='Payment History'
-            ></SectionTitle>
+                subHeading="Payment History"
+                heading="Payment History"
+            />
             <table className="table w-full">
-                {/* head */}
                 <thead>
                     <tr className="font-bold">
                         <th>#</th>
@@ -32,11 +34,10 @@ const PaymentHistory = () => {
                         <th>Email</th>
                         <th>Item Name</th>
                         <th>Price</th>
-                        <th>Transaction Id</th>
+                        <th>Transaction ID</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* row */}
                     {history.map((payment, index) => (
                         <tr key={payment._id}>
                             <td>{index + 1}</td>
