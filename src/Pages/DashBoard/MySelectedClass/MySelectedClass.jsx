@@ -58,7 +58,7 @@ const MySelectedClass = () => {
             <div className='uppercase h-[60px] mb-4 align-items-center font-semibold flex justify-evenly'>
                 <h3 className="text-3xl">Total Items : {cart.length}</h3>
                 <h3 className="text-3xl">Total Price : {total}</h3>
-                <Link to='/dashboard/payment'><button className="btn btn-primary  btn-sm"> <FaDollarSign /> Pay</button></Link>
+                {/* <Link to='/dashboard/payment'><button className="btn btn-primary  btn-sm"> <FaDollarSign /> Pay</button></Link> */}
 
 
             </div>
@@ -75,6 +75,7 @@ const MySelectedClass = () => {
                             <th >Price</th>
                             <th >Update</th>
                             <th >Delete</th>
+                            <th >pay</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,6 +112,10 @@ const MySelectedClass = () => {
 
                                         <FaTrashAlt />
                                     </button>
+                                </td>
+                                <td>
+                                    <Link to='/dashboard/payment'><button className="btn btn-primary  btn-sm"> <FaDollarSign /> Pay</button></Link>
+
                                 </td>
                             </tr>)
                         }

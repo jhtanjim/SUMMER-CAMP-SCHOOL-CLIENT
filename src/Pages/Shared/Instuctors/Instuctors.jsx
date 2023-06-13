@@ -21,6 +21,16 @@ const InstructorData = () => {
     }, []);
 
     return (
+
+
+
+
+
+
+
+
+
+
         <div className="flex flex-wrap justify-center">
             {instructors.map(instructor => (
                 <div key={instructor._id} className="max-w-sm mx-4 my-6 bg-white rounded-lg shadow-lg">

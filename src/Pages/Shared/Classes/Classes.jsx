@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Cover from '../Cover/Cover';
 import { Helmet } from 'react-helmet-async';
 import UseClass from '../../../Hooks/UseClass/UseClass';
@@ -10,44 +10,47 @@ import useCarts from '../../../Hooks/useCarts/useCarts';
 
 const Classes = () => {
     const [classes] = UseClass();
-    const navigate = useNavigate()
-    const { user } = useContext(AuthContext)
-    const [, refetch] = useCarts()
-
-    const location = useLocation()
-
-
-
+    const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
+    const [, refetch] = useCarts();
+    const location = useLocation();
+    const [selectedClasses, setSelectedClasses] = useState([]);
 
     const handleSelect = classItem => {
-
-        let { _id, image, name, email, numClasses, classes, price, statusbar, enrolled } = classItem
-        enrolled++
         if (user && user.email) {
+            const selectItem = {
+                classItem: classItem._id,
+                name: classItem.name,
+                image: classItem.image,
+                email: user.email,
+                price: classItem.price
+            };
 
-            const selectItem = { classItem: _id, name, image, email: user.email, price }
             fetch('http://localhost:5000/carts', {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(selectItem)
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
-                        refetch()
+                        refetch();
+                        setSelectedClasses(prevSelectedClasses => [
+                            ...prevSelectedClasses,
+                            classItem._id
+                        ]);
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'Class has been Addeded',
+                            title: 'Class has been Added',
                             showConfirmButton: false,
                             timer: 1500
-                        })
+                        });
                     }
-                })
-        }
-        else {
+                });
+        } else {
             Swal.fire({
                 title: 'Please Login to Select the Class',
                 icon: 'warning',
@@ -55,51 +58,54 @@ const Classes = () => {
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Login Now'
-            }).then((result) => {
+            }).then(result => {
                 if (result.isConfirmed) {
-                    navigate('/login', { state: { from: location } })
+                    navigate('/login', { state: { from: location } });
                 }
-            })
+            });
         }
-    }
-
+    };
 
     return (
         <div className=''>
             <Helmet>
                 <title>Bajao | Classes</title>
             </Helmet>
-            <Cover
-                img='https://i.ibb.co/C9ZvJLF/pexels-mart-production-8471826.jpg'
-                title="Music Classes"
-            ></Cover>
+            <Cover img='https://i.ibb.co/C9ZvJLF/pexels-mart-production-8471826.jpg' title="Music Classes" />
             <div className="my-20 grid gap-8 xl:grid-cols-4  mx-12">
-                {classes.map((classItem) => (
-                    classItem.statusbar === 'approved' &&
-                    <div className="card w-full my-4 bg-base-100 shadow-xl border border-black border-opacity-30 lg:p-8">
-                        <figure><img className='rounded-xl' src={classItem.image} alt="Shoes" /></figure>
-                        <div className="card-body">
-                            <h2 className="card-title sm:text-xs lg:text-xl font-bold">
-                                <FaList />  {classItem.name}
-
-                            </h2>
-                            <h2 className="card-title sm:text-xs lg:text-xl font-bold">
-                                Price: <FaDollarSign />{classItem.price}
-
-                            </h2>
-                            <h2 className="card-title  lg:text-lg font-bold mt-3">
-                                <FaIdBadge /> <span className='underline'>Instuctor:</span>  {classItem.instructor}
-
-                            </h2>
-                            <h2 className="card-title sm:text-xs lg:text-xl font-bold my-3">
-                                <FaChair /> <span className='underline'>Available Seat:</span> <span className=''> {classItem.seat}</span>
-
-                            </h2>
-                            <h2>{classItem.numOfStudent}</h2>
-                            <button onClick={() => handleSelect(classItem)} className="btn btn-primary mt-3 font-bold text-xl">Select</button>
-
+                {classes.map(classItem => (
+                    classItem.statusbar === 'approved' && (
+                        <div
+                            key={classItem._id}
+                            className="card w-full my-4 bg-base-100 shadow-xl border border-black border-opacity-30 lg:p-8"
+                        >
+                            <figure>
+                                <img className='rounded-xl' src={classItem.image} alt="Shoes" />
+                            </figure>
+                            <div className="card-body">
+                                <h2 className="card-title sm:text-xs lg:text-xl font-bold">
+                                    <FaList /> {classItem.name}
+                                </h2>
+                                <h2 className="card-title sm:text-xs lg:text-xl font-bold">
+                                    Price: <FaDollarSign />{classItem.price}
+                                </h2>
+                                <h1 className="card-title lg:text-lg font-bold mt-3">
+                                    <FaIdBadge /> <span className='underline'>Instructor:</span> {classItem.instructor}
+                                </h1>
+                                <h2 className="card-title sm:text-xs lg:text-xl font-bold my-3">
+                                    <FaChair /> <span className='underline'>Available Seat:</span> <span className=''> {classItem.seat}</span>
+                                </h2>
+                                <h2>{classItem.numOfStudent}</h2>
+                                <button
+                                    onClick={() => handleSelect(classItem)}
+                                    className="btn btn-primary mt-3 font-bold text-xl"
+                                    disabled={selectedClasses.includes(classItem._id)}
+                                >
+                                    {selectedClasses.includes(classItem._id) ? 'Selected' : 'Select'}
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    )
                 ))}
             </div>
         </div>

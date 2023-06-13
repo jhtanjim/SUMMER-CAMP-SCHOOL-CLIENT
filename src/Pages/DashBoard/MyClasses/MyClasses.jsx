@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import UseClass from '../../../Hooks/UseClass/UseClass';
 import { FaEdit } from 'react-icons/fa';
 
 const MyClasses = () => {
     const [classes] = UseClass();
+    const [numOfStudents, setNumOfStudents] = useState({});
+
+    useEffect(() => {
+        fetch('http://localhost:5000/payments')
+            .then(res => res.json())
+            .then(data => {
+                const studentCount = data.reduce((count, item) => {
+                    if (count[item.itemNames]) {
+                        count[item.itemNames] += 1;
+                    } else {
+                        count[item.itemNames] = 1;
+                    }
+                    return count;
+                }, {});
+                setNumOfStudents(studentCount);
+            });
+    }, []);
 
     return (
         <div>
             <SectionTitle subHeading="My Classes" heading="My Classes" />
 
             <div className="w-full">
-
-
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
@@ -49,13 +64,12 @@ const MyClasses = () => {
                                     <td>{item.name}</td>
                                     <td>{item.price}</td>
                                     <td>{item.statusbar}</td>
-                                    <td>{item.enrolled}</td>
+                                    <td>{numOfStudents[item.name] || 0}</td>
                                     <td>
                                         {/* Render feedback component or display feedback */}
                                     </td>
                                     <td>
-                                        <button className="btn btn-ghost  bg-orange-700  text-white">
-
+                                        <button className="btn btn-ghost bg-orange-700 text-white">
                                             <FaEdit />
                                         </button>
                                     </td>

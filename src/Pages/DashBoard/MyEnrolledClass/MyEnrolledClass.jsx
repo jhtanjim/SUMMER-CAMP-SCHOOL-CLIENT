@@ -7,8 +7,8 @@ const MyEnrolledClass = () => {
 
     useEffect(() => {
         fetch('http://localhost:5000/payments')
-            .then(res => res.json())
-            .then(data => {
+            .then((res) => res.json())
+            .then((data) => {
                 console.log(data);
                 setEnrolledClass(data);
             });
@@ -34,21 +34,19 @@ const MyEnrolledClass = () => {
                 </thead>
                 <tbody>
                     {enrolledClass.map((classItem, index) => (
-                        <tr key={classItem._id.$oid}>
+                        <tr key={classItem._id}>
                             <td>{index + 1}</td>
-                            <td className='flex gap-4'>
-                                {classItem.itemImage.map((image, imageIndex) => (
-                                    <img key={imageIndex} src={image} alt={classItem.itemNames[imageIndex]} className="w-10 h-10" />
-                                ))}
+                            <td>
+                                <img src={classItem.itemsImage} alt={classItem.itemNames} className="w-10 h-10" />
                             </td>
-                            <td>{classItem.itemNames.join(', ')}</td>
-                            <td> ${classItem.price}</td>
+                            <td>{classItem.itemNames}</td>
+                            <td>${classItem.price}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
     );
-}
+};
 
 export default MyEnrolledClass;

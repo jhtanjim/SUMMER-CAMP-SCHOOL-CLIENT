@@ -26,57 +26,58 @@ const DashBoard = () => {
 
 
 
-                    {
+                    {/* {
                         // admin hole
-                        isAdmin ? <>
-                            <li>
-                                <NavLink to='instuctorDashBoard'><FaSave /> Admin DashBoard
+                        isAdmin ? <> */}
+                    <li>
+                        <NavLink to='instuctorDashBoard'><FaSave /> Admin DashBoard
 
-                                </NavLink>
+                        </NavLink>
 
-                            </li>
-                            <li>
-                                <NavLink to='addClass'><FaBook />  Add Classes </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='myclasses'><FaBook />  My Classes </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='PaymentHistory'><FaMoneyBill />  Payment History </NavLink>
-                            </li>
-
-
-                            <li>
-                                <NavLink to='manageClasses'><FaUniversity />  Manage Classes </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='manageUsers'><FaUser />  Manage Users </NavLink>
-                            </li>
+                    </li>
+                    <li>
+                        <NavLink to='addClass'><FaBook />  Add Classes </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='myclasses'><FaBook />  My Classes </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='PaymentHistory'><FaMoneyBill />  Payment History </NavLink>
+                    </li>
 
 
+                    <li>
+                        <NavLink to='manageClasses'><FaUniversity />  Manage Classes </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='manageUsers'><FaUser />  Manage Users </NavLink>
+                    </li>
 
 
 
 
+
+                    {/* 
                         </> :
 
                             // student hole
-                            <>
-                                <li>
-                                    <NavLink to='studentDashBoard'><FaSave /> Student DashBoard
+                            <> */}
+                    <li>
+                        <NavLink to='studentDashBoard'><FaSave /> Student DashBoard
 
-                                    </NavLink>
-                                    <NavLink to='MySelectedClass'><FaSave />  My Selected Classes
-                                        <span className="badge badge-outline bg-indigo-500 text-white p-4 ">+{cart?.length || 0}</span>
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='MyEnrolledClass'><FaBook />  My Enrolled Classes </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='PaymentHistory'><FaMoneyBill />  Payment History </NavLink>
-                                </li></>
-                    }
+                        </NavLink>
+                        <NavLink to='MySelectedClass'><FaSave />  My Selected Classes
+                            <span className="badge badge-outline bg-indigo-500 text-white p-4 ">+{cart?.length || 0}</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='MyEnrolledClass'><FaBook />  My Enrolled Classes </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='PaymentHistory'><FaMoneyBill />  Payment History </NavLink>
+                    </li>
+                    {/* </> */}
+                    {/* } */}
 
 
                     {/* Sidebar content here */}
