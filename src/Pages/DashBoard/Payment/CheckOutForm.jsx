@@ -85,7 +85,7 @@ const CheckoutForm = ({ cart, price }) => {
                 date: new Date(),
                 enrolled: cart[0].length,
                 classItems: cart.map(item => item._id),
-
+                seat: cart[0].seat,
                 itemsId: cart[0]._id, // Store only the ID of the first item
                 itemsImage: cart[0].image, // Store only the ID of the first item
                 status: 'service pending',

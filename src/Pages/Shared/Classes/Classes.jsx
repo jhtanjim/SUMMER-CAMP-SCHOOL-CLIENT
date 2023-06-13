@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Cover from '../Cover/Cover';
 import { Helmet } from 'react-helmet-async';
 import UseClass from '../../../Hooks/UseClass/UseClass';
@@ -7,6 +7,7 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCarts from '../../../Hooks/useCarts/useCarts';
+import { useContext } from 'react';
 
 const Classes = () => {
     const [classes] = UseClass();
@@ -15,6 +16,23 @@ const Classes = () => {
     const [, refetch] = useCarts();
     const location = useLocation();
     const [selectedClasses, setSelectedClasses] = useState([]);
+    const [numOfStudent, setNumOfStudent] = useState({});
+
+    useEffect(() => {
+        fetch('http://localhost:5000/payments')
+            .then(res => res.json())
+            .then(data => {
+                const studentCount = data.reduce((count, item) => {
+                    if (count[item.itemNames]) {
+                        count[item.itemNames] += 1;
+                    } else {
+                        count[item.itemNames] = 1;
+                    }
+                    return count;
+                }, {});
+                setNumOfStudent(studentCount);
+            });
+    }, []);
 
     const handleSelect = classItem => {
         if (user && user.email) {
@@ -95,7 +113,7 @@ const Classes = () => {
                                 <h2 className="card-title sm:text-xs lg:text-xl font-bold my-3">
                                     <FaChair /> <span className='underline'>Available Seat:</span> <span className=''> {classItem.seat}</span>
                                 </h2>
-                                <h2>{classItem.numOfStudent}</h2>
+                                <h2>Number of Students: {numOfStudent[classItem.name] || 0}</h2>
                                 <button
                                     onClick={() => handleSelect(classItem)}
                                     className="btn btn-primary mt-3 font-bold text-xl"
