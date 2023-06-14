@@ -55,7 +55,9 @@ const Header = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    <  img className='h-28' src="https://i.ibb.co/mchsX1f/Bajao-removebg-preview.png" alt="" />
+
+                    <Link to='/'><  img className='h-28' src="https://i.ibb.co/mchsX1f/Bajao-removebg-preview.png" alt="" /></Link>
+
                 </div>
 
                 <div className="navbar-end py-4">

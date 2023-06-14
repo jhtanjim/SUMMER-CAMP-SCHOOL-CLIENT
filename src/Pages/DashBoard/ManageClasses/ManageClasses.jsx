@@ -10,7 +10,7 @@ const ManageClasses = () => {
     const [, refetch] = useCarts();
 
     const handleApproved = (classes) => {
-        fetch(`http://localhost:5000/class/approved/${classes._id}`, {
+        fetch(`https://summer-camp-school-server-jhtanjim.vercel.app/class/approved/${classes._id}`, {
             method: 'PATCH',
         })
             .then((res) => res.json())
@@ -41,7 +41,7 @@ const ManageClasses = () => {
             confirmButtonText: 'Submit',
             showLoaderOnConfirm: true,
             preConfirm: (feedback) => {
-                return fetch(`http://localhost:5000/class/deny/${classes._id}`, {
+                return fetch(`https://summer-camp-school-server-jhtanjim.vercel.app/class/deny/${classes._id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',

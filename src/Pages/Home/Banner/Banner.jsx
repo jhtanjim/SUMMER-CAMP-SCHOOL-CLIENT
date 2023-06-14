@@ -18,7 +18,7 @@ const Banner = () => {
     };
 
     const headingStyles = {
-        fontSize: '70px',
+        fontSize: '50px',
         fontWeight: 'bold',
         textTransform: 'uppercase', // Add this property
 

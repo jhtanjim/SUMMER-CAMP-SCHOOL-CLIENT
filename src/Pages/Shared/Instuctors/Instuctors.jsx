@@ -8,7 +8,7 @@ const InstructorData = () => {
 
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/users');
+                const response = await fetch('https://summer-camp-school-server-jhtanjim.vercel.app/users');
                 const data = await response.json();
                 const filteredInstructors = data.filter(item => item.role === 'instuctor');
                 setInstructors(filteredInstructors);

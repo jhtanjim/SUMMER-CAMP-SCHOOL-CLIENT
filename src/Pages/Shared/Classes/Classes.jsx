@@ -24,7 +24,7 @@ const Classes = () => {
     const [isInstructor] = UseInstructor();
 
     useEffect(() => {
-        fetch('http://localhost:5000/payments')
+        fetch('https://summer-camp-school-server-jhtanjim.vercel.app/payments')
             .then(res => res.json())
             .then(data => {
                 const studentCount = data.reduce((count, item) => {
@@ -49,7 +49,7 @@ const Classes = () => {
                 price: classItem.price
             };
 
-            fetch('http://localhost:5000/carts', {
+            fetch('https://summer-camp-school-server-jhtanjim.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

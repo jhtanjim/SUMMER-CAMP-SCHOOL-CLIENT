@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import UseClass from '../../../Hooks/UseClass/UseClass';
 import { FaCalendarPlus, FaChair, FaDollarSign, FaIdBadge, FaList, FaMusic } from 'react-icons/fa';
 import { AuthContext } from '../../../Providers/AuthProvider';
-import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCarts from '../../../Hooks/useCarts/useCarts';
 import { useContext } from 'react';
@@ -20,7 +19,7 @@ const PopularClass = () => {
     const [topClasses, setTopClasses] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/payments')
+        fetch('https://summer-camp-school-server-jhtanjim.vercel.app/payments')
             .then(res => res.json())
             .then(data => {
                 const studentCount = data.reduce((count, item) => {
@@ -44,59 +43,8 @@ const PopularClass = () => {
         setTopClasses(sortedClasses.slice(0, 6));
     }, [classes, numOfStudent]);
 
-    const handleSelect = classItem => {
-        if (user && user.email) {
-            const selectItem = {
-                classItem: classItem._id,
-                name: classItem.name,
-                image: classItem.image,
-                email: user.email,
-                price: classItem.price
-            };
-
-            fetch('http://localhost:5000/carts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(selectItem)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.insertedId) {
-                        refetch();
-                        setSelectedClasses(prevSelectedClasses => [
-                            ...prevSelectedClasses,
-                            classItem._id
-                        ]);
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'Class has been Added',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }
-                });
-        } else {
-            Swal.fire({
-                title: 'Please Login to Select the Class',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Login Now'
-            }).then(result => {
-                if (result.isConfirmed) {
-                    navigate('/login', { state: { from: location } });
-                }
-            });
-        }
-    };
-
     return (
         <div>
-
             <SectionTitle
                 subHeading='Popular Class'
                 heading='Popular Class'

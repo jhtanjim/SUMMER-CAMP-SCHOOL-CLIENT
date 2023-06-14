@@ -8,7 +8,7 @@
 //     const [numOfStudents, setNumOfStudents] = useState({});
 
 //     useEffect(() => {
-//         fetch('http://localhost:5000/payments')
+//         fetch('https://summer-camp-school-server-jhtanjim.vercel.app/payments')
 //             .then(res => res.json())
 //             .then(data => {
 //                 const studentCount = data.reduce((count, item) => {
@@ -96,7 +96,7 @@ const MyClasses = () => {
     const [numOfStudents, setNumOfStudents] = useState({});
 
     useEffect(() => {
-        fetch('http://localhost:5000/payments')
+        fetch('https://summer-camp-school-server-jhtanjim.vercel.app/payments')
             .then((res) => res.json())
             .then((data) => {
                 const studentCount = data.reduce((count, item) => {
