@@ -125,8 +125,9 @@ const MyClasses = () => {
                                 <th>Class Name</th>
                                 <th>Price</th>
                                 <th>Status</th>
-                                <th>Total Students</th>
                                 <th>Feedback</th>
+                                <th>Total Students</th>
+
                                 <th>Update</th>
                             </tr>
                         </thead>
