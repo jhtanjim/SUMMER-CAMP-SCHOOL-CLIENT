@@ -7,7 +7,7 @@ import useCarts from '../../../Hooks/useCarts/useCarts';
 const Header = () => {
     const { user, logout } = useContext(AuthContext);
     const [cart] = useCarts();
-
+    console.log(cart);
     const handleLogOut = () => {
         logout()
             .then(() => { })

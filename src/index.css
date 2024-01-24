@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.drawer-side a.active {
+/* .drawer-side a.active {
   color: rgb(25, 11, 114);
   font-weight: bold;
   text-decoration: underline;
@@ -11,4 +11,4 @@
 
 .drawer-side a {
   background-color: transparent;
-}
+} */
