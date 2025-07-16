@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../../Providers/AuthProvider";
-// import "./CheckoutForm.css";
 
 const CheckoutForm = ({ cart, price }) => {
   const stripe = useStripe();
