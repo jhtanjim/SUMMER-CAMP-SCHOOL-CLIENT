@@ -1,9 +1,8 @@
-import React from "react";
-import Banner from "../Banner/Banner";
 import { Helmet } from "react-helmet-async";
+import About from "../About/About";
+import Banner from "../Banner/Banner";
 import PopularClass from "../PopularClass/PopularClass";
 import PopularInstuctors from "../PopularInstuctors/PopularInstuctors";
-import About from "../About/About";
 import Services from "../Services/Services";
 
 const Home = () => {
@@ -13,11 +12,12 @@ const Home = () => {
         <title>Bajao | Home</title>
       </Helmet>
       <Banner></Banner>
-
-      <About></About>
-      <Services />
-      <PopularClass></PopularClass>
-      <PopularInstuctors></PopularInstuctors>
+      <div className="container mx-auto">
+        <About></About>
+        <Services />
+        <PopularClass></PopularClass>
+        <PopularInstuctors></PopularInstuctors>
+      </div>
     </div>
   );
 };

@@ -1,15 +1,19 @@
-import React from "react";
+"use client";
 
-const SectionTitle = ({ heading, subHeading }) => {
+const SectionTitle = ({ heading, subHeading, className = "" }) => {
   return (
-    <div className="mx-auto text-center  mt-12 mb-12  md:w-3/12">
-      {/* <p className="text-xl  text-sky-700 font-bold mb-4">{subHeading}</p>
-      <h3 className="text-teal-900	 text-2xl font-bold uppercase border-y-4  py-4">
-        {heading}
-      </h3> */}
-
-      <h2 className="text-xl font-bold text-orange-500">{subHeading}</h2>
-      <h2 className="text-4xl font-extrabold my-2">{heading}</h2>
+    <div className={`text-center py-12 ${className}`}>
+      <div className="max-w-3xl mx-auto px-4">
+        {subHeading && (
+          <p className="text-lg font-semibold text-purple-600 mb-4 tracking-wide uppercase">
+            {subHeading}
+          </p>
+        )}
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+          {heading}
+        </h2>
+        <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto rounded-full" />
+      </div>
     </div>
   );
 };
