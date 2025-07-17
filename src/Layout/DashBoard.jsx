@@ -18,8 +18,9 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const DashBoard = () => {
   const [cart] = useCarts();
@@ -28,7 +29,7 @@ const DashBoard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
-
+  const { user } = useContext(AuthContext);
   // Check if mobile on mount and when window resizes
   useEffect(() => {
     const checkIfMobile = () => {
@@ -267,11 +268,12 @@ const DashBoard = () => {
         <div className="mt-auto p-4 border-t border-gray-200">
           <div className="flex items-center gap-3 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer">
             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center text-white">
-              <User className="w-5 h-5" />
+              <img src={user?.photoURL} alt="" />
+              || <User className="w-5 h-5" />
             </div>
             <div>
-              <p className="font-medium text-gray-800">Profile</p>
-              <p className="text-xs text-gray-500">Account settings</p>
+              <p className="font-medium text-gray-800">{user?.displayName}</p>
+              <p className="text-xs text-gray-500">{user?.email}</p>
             </div>
           </div>
         </div>

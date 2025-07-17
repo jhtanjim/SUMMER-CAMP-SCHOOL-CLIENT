@@ -1,6 +1,4 @@
-"use client";
-
-import { Eye, EyeOff, ImageIcon, Lock, Mail, Music, User } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, Music, Upload, User, X } from "lucide-react";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,27 +10,187 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
     watch,
+    setValue,
+    clearErrors,
   } = useForm();
+
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // Compress image function
+  const compressImage = (
+    file,
+    maxWidth = 800,
+    maxHeight = 600,
+    quality = 0.8
+  ) => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      const img = new Image();
+
+      img.onload = () => {
+        // Calculate new dimensions
+        let { width, height } = img;
+
+        if (width > height) {
+          if (width > maxWidth) {
+            height = (height * maxWidth) / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width = (width * maxHeight) / height;
+            height = maxHeight;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        // Draw and compress
+        ctx.drawImage(img, 0, 0, width, height);
+
+        canvas.toBlob(resolve, "image/jpeg", quality);
+      };
+
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
+  // Handle file selection with compression
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        // 10MB limit for original file
+        Swal.fire({
+          title: "File Too Large",
+          text: "Please select an image smaller than 10MB",
+          icon: "error",
+          customClass: { popup: "rounded-xl" },
+        });
+        return;
+      }
+
+      if (!file.type.startsWith("image/")) {
+        Swal.fire({
+          title: "Invalid File Type",
+          text: "Please select an image file",
+          icon: "error",
+          customClass: { popup: "rounded-xl" },
+        });
+        return;
+      }
+
+      try {
+        // Compress the image
+        const compressedFile = await compressImage(file);
+
+        // Convert blob to file
+        const compressedImageFile = new File([compressedFile], file.name, {
+          type: "image/jpeg",
+          lastModified: Date.now(),
+        });
+
+        setImageFile(compressedImageFile);
+
+        // Create preview
+        const reader = new FileReader();
+        reader.onload = (e) => setImagePreview(e.target.result);
+        reader.readAsDataURL(compressedImageFile);
+
+        clearErrors("photoURL");
+      } catch (error) {
+        console.error("Image compression error:", error);
+        Swal.fire({
+          title: "Image Processing Failed",
+          text: "Please try selecting a different image",
+          icon: "error",
+          customClass: { popup: "rounded-xl" },
+        });
+      }
+    }
+  };
+
+  // Upload image to ImgBB
+  const uploadImageToImgBB = async (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const response = await fetch(
+        `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_IMAGE_UPLOAD_TOKEN
+        }`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+      if (data.success) {
+        return data.data.url;
+      }
+      throw new Error("Upload failed");
+    } catch (error) {
+      console.error("Image upload error:", error);
+      throw error;
+    }
+  };
+
+  // Remove selected image
+  const removeImage = () => {
+    setImageFile(null);
+    setImagePreview(null);
+    setValue("photoURL", "");
+  };
+
   const onSubmit = async (data) => {
     setIsLoading(true);
+
     try {
+      let photoURL = "";
+
+      // Upload image if file is selected
+      if (imageFile) {
+        try {
+          photoURL = await uploadImageToImgBB(imageFile);
+        } catch (error) {
+          Swal.fire({
+            title: "Image Upload Failed",
+            text: "Account will be created without profile picture",
+            icon: "warning",
+            customClass: { popup: "rounded-xl" },
+          });
+          // Continue without image
+        }
+      }
+
+      // Create user account
       const res = await createUser(data.email, data.password);
       const loggedUser = res.user;
-      await updateUserProfile(data.name, data.photoURL);
+
+      // Update profile
+      await updateUserProfile(data.name, photoURL);
+
+      // Save user to database
       const savedUser = {
         name: data.name,
         email: data.email,
-        image: data.photoURL,
+        image: photoURL,
       };
+
       const response = await fetch(
         "https://summer-camp-school-server-jhtanjim.vercel.app/users",
         {
@@ -43,18 +201,19 @@ const SignUp = () => {
           body: JSON.stringify(savedUser),
         }
       );
+
       const responseData = await response.json();
       if (responseData.insertedId) {
         reset();
+        setImageFile(null);
+        setImagePreview(null);
         await Swal.fire({
           title: "Welcome to Bajao!",
           text: "Account created successfully",
           icon: "success",
           timer: 1500,
           showConfirmButton: false,
-          customClass: {
-            popup: "rounded-xl",
-          },
+          customClass: { popup: "rounded-xl" },
         });
         navigate("/");
       }
@@ -62,11 +221,9 @@ const SignUp = () => {
       console.error("Sign up error:", error);
       Swal.fire({
         title: "Sign Up Failed",
-        text: "Please try again later",
+        text: error.message || "Please try again later",
         icon: "error",
-        customClass: {
-          popup: "rounded-xl",
-        },
+        customClass: { popup: "rounded-xl" },
       });
     } finally {
       setIsLoading(false);
@@ -114,44 +271,58 @@ const SignUp = () => {
                     errors.name ? "border-red-400" : "border-gray-300"
                   }`}
                   placeholder="Enter your full name"
-                  aria-invalid={errors.name ? "true" : "false"}
                 />
               </div>
               {errors.name && (
-                <p role="alert" className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-600">
                   {errors.name.message}
                 </p>
               )}
             </div>
 
-            {/* Photo URL Field */}
+            {/* Photo Upload Section */}
             <div>
-              <label
-                htmlFor="photo-url"
-                className="block text-sm font-semibold text-gray-700 mb-2"
-              >
-                Photo URL
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Profile Photo (Optional)
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <ImageIcon className="h-5 w-5 text-gray-400" />
+
+              <div className="space-y-4">
+                {/* File Upload Area */}
+                <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-purple-500 transition-colors duration-200 relative">
+                  {imagePreview ? (
+                    <div className="relative">
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        className="mx-auto h-32 w-32 object-cover rounded-full"
+                      />
+                      <button
+                        type="button"
+                        onClick={removeImage}
+                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors duration-200"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      <Upload className="mx-auto h-12 w-12 text-gray-400 mb-2" />
+                      <p className="text-sm text-gray-600 mb-2">
+                        Click to upload or drag and drop
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        PNG, JPG, JPEG up to 10MB (will be compressed)
+                      </p>
+                    </div>
+                  )}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  />
                 </div>
-                <input
-                  id="photo-url"
-                  type="url"
-                  {...register("photoURL", {})}
-                  className={`block w-full pl-12 pr-4 py-3 border rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-3 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 text-gray-900 ${
-                    errors.photoURL ? "border-red-400" : "border-gray-300"
-                  }`}
-                  placeholder="Enter photo URL"
-                  aria-invalid={errors.photoURL ? "true" : "false"}
-                />
               </div>
-              {errors.photoURL && (
-                <p role="alert" className="mt-2 text-sm text-red-600">
-                  {errors.photoURL.message}
-                </p>
-              )}
             </div>
 
             {/* Email Field */}
@@ -180,11 +351,10 @@ const SignUp = () => {
                     errors.email ? "border-red-400" : "border-gray-300"
                   }`}
                   placeholder="Enter your email"
-                  aria-invalid={errors.email ? "true" : "false"}
                 />
               </div>
               {errors.email && (
-                <p role="alert" className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-600">
                   {errors.email.message}
                 </p>
               )}
@@ -226,13 +396,11 @@ const SignUp = () => {
                     errors.password ? "border-red-400" : "border-gray-300"
                   }`}
                   placeholder="Create a password"
-                  aria-invalid={errors.password ? "true" : "false"}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-500 hover:text-gray-700 transition-colors duration-200"
-                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
                     <EyeOff className="h-5 w-5" />
@@ -242,7 +410,7 @@ const SignUp = () => {
                 </button>
               </div>
               {errors.password && (
-                <p role="alert" className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-600">
                   {errors.password.message}
                 </p>
               )}
@@ -274,15 +442,11 @@ const SignUp = () => {
                       : "border-gray-300"
                   }`}
                   placeholder="Confirm your password"
-                  aria-invalid={errors.confirmPassword ? "true" : "false"}
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-500 hover:text-gray-700 transition-colors duration-200"
-                  aria-label={
-                    showConfirmPassword ? "Hide password" : "Show password"
-                  }
                 >
                   {showConfirmPassword ? (
                     <EyeOff className="h-5 w-5" />
@@ -292,7 +456,7 @@ const SignUp = () => {
                 </button>
               </div>
               {errors.confirmPassword && (
-                <p role="alert" className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-600">
                   {errors.confirmPassword.message}
                 </p>
               )}

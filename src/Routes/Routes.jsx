@@ -10,12 +10,15 @@ import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoutes from "./PrivateRoutes";
 
 import AddClass from "../Pages/DashBoard/AddClass/AddClass";
+import AdminDashBoard from "../Pages/DashBoard/AdminDashBoard/AdminDashBoard";
+import InstructorDashBoard from "../Pages/DashBoard/InstructorDashBoard/InstructorDashBoard";
 import ManageClasses from "../Pages/DashBoard/ManageClasses/ManageClasses";
 import ManageUsers from "../Pages/DashBoard/ManageUsers/ManageUsers";
 import MyClasses from "../Pages/DashBoard/MyClasses/MyClasses";
 import MyEnrolledClass from "../Pages/DashBoard/MyEnrolledClass/MyEnrolledClass";
 import Payment from "../Pages/DashBoard/Payment/Payment";
 import PaymentHistory from "../Pages/DashBoard/PaymentHistory/PaymentHistory";
+import StudentDashBoard from "../Pages/DashBoard/StudentDashBoard/StudentDashBoard";
 import UnderConstruction from "../Pages/Shared/FourOfour/FourOfour";
 import AdminRoute from "./AdminRoute";
 export const router = createBrowserRouter([
@@ -57,6 +60,14 @@ export const router = createBrowserRouter([
         path: "MySelectedClass",
         element: <MySelectedClass></MySelectedClass>,
       },
+      {
+        path: "studentDashBoard",
+        element: <StudentDashBoard />,
+      },
+      {
+        path: "instructorDashBoard",
+        element: <InstructorDashBoard />,
+      },
 
       {
         path: "payment",
@@ -92,6 +103,15 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "adminDashBoard",
+        element: (
+          <AdminRoute>
+            <AdminDashBoard />
           </AdminRoute>
         ),
       },
